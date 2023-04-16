@@ -25,7 +25,13 @@ const Products = () => {
     const getData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch("https://itproducts.onrender.com/products");
+        let url;
+        if(Math.random()){
+          url=`https://itproducts.onrender.com/products`
+        }else{
+          url=`https://itproducts.onrender.com/productts` // this is a wrong URL
+        }
+        const res = await fetch(url);
         if (!res.ok) throw new Error("Oops! An error has occured");
         const json = await res.json();
         setIsLoading(false);

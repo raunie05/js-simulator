@@ -12,6 +12,7 @@ const Booking = () => {
     e.preventDefault();
     setTnx("Thanks for booking!");
     setFormData(<p>{sub + " " + date}</p>);
+    throw new Error(`error caught after booking ${sub}`)
   }
   return (
     <section className="">
