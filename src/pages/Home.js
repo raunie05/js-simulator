@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import BestSelling from "../components/BestSelling";
 import Consultation from "../components/Consultation";
 import FeatureProducts from "../components/FeatureProducts";
