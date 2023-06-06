@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import SingleProduct from "../components/SingleProduct";
 import { Link } from "react-router-dom";
 
@@ -20,28 +20,29 @@ const Products = () => {
     "Keyboard",
     "graphics card",
   ];
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        setIsLoading(true);
-        let url;
-        if(Math.random()){
-          url=`https://itproducts.onrender.com/products`
-        }else{
-          url=`https://itproducts.onrender.com/productts` // this is a wrong URL
-        }
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Oops! An error has occured");
-        const json = await res.json();
-        setIsLoading(false);
-        setProducts(json);
-        setFilterProducts(json);
-      } catch (err) {
-        setIsLoading(false);
-        setErr(err.message);
+  const getData = (async () => {
+    try {
+      setIsLoading(true);
+      let url;
+      if (Boolean(Math.random() < 0.4)) {
+        url = `https://itproducts.onrender.com/products`;
+      } else {
+        url = `https://itproducts.onrender.com/productts`; // this is a wrong URL
       }
-    };
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Oops! An error has occured");
+      const json = await res.json();
+      setIsLoading(false);
+      setProducts(json);
+      setFilterProducts(json);
+      setErr('')
+    } catch (err) {
+      console.log(err);
+      setIsLoading(false);
+      setErr(err.message);
+    }
+  });
+  useEffect(() => {
     getData();
   }, []);
 
@@ -58,11 +59,25 @@ const Products = () => {
         <Link to="/product" className="text-lg text-gray-500 font-semibold">
           &larr;Refresh page
         </Link>
+        <button
+          onClick={async () => {
+            await getData();
+          }}
+        >
+          Fetch data again
+        </button>
       </p>
     );
 
   return (
     <div className="container mx-auto pb-20">
+              <button
+          onClick={async () => {
+            await getData();
+          }}
+        >
+          Fetch data again
+        </button>
       <h2 className="text-center text-3xl py-10">All Products</h2>
       <div className="flex justify-between gap-10">
         <div className="w-[20%] bg-gray-50 flex flex-col gap-3 px-3 pt-2">

@@ -4,10 +4,12 @@ import {
   FaPercentage,
   FaShieldAlt,
 } from "react-icons/fa";
+import { GenerateDiffErrors } from "./ErrorGeneration";
 
 const Whyme = () => {
   return (
     <section className=" bg-gray-50 pb-20">
+       <GenerateDiffErrors/>
       <div className="container mx-auto flex flex-col gap-5">
         <h2 className="text-4xl py-14 text-center font-semibold text-gray-700">
           Why Choose Us

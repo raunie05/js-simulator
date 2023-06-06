@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { GenerateDiffErrors } from "./ErrorGeneration";
 const Navbar = () => {
   return (
     <div className="shadow-lg backdrop-blur-lg py-5 text-gray-900 bg-gray-50">
@@ -26,7 +27,11 @@ const Navbar = () => {
             <NavLink to="/contact"onClick={()=>{throw new Error('redirecting issues at contact')}} >Contact</NavLink>
           </li>
           <li>
+            <NavLink to="/*" >404 2</NavLink>
+          </li>
+          <li>
             <NavLink to="/cart">
+            <GenerateDiffErrors/>
               <FaShoppingCart />
             </NavLink>
           </li>

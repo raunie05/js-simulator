@@ -4,6 +4,14 @@ import OurTeam from "../components/OurTeam";
 const About = () => {
   return (
     <>
+      <button
+        onClick={() => {
+          const x = null;
+          x();
+        }}
+      >
+        Generate a Type Error
+      </button>
       <Herotext textt="About Us" />
       <section className=" bg-gray-50 py-20 px-20 ">
         <div className="container mx-auto grid grid-cols-2">
