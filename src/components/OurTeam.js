@@ -1,3 +1,5 @@
+import { GenerateDiffErrors } from "./ErrorGeneration";
+
 const OurTeam = () => {
   const teamMenbers = [
     {
@@ -34,6 +36,7 @@ const OurTeam = () => {
 
   return (
     <section className="bg-white py-20 ">
+       <GenerateDiffErrors/>
       <div className="w-[70%] mx-auto">
         <div className="flex flex-col gap-3 justify-center items-center w-[50%] mx-auto text-center">
           <h2 className="text-5xl text-gray-700 font-semibold ">Our Team</h2>

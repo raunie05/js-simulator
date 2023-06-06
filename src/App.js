@@ -15,7 +15,6 @@ const App = () => {
   return (
     <section className="">
       <Navbar />
-
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

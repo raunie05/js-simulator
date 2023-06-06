@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom";
 
 const Consultation = () => {
   const navigate = useNavigate();
+  const navToBooking = () => {
+    navigate("booking")
+    throw new Error('ehh cannot book');
+  }
   return (
     <section className="consultation flex items-center   py-10 h-[20rem] ">
       <div className="w-[90%] mx-auto flex justify-evenly items-center">
@@ -16,10 +20,14 @@ const Consultation = () => {
         </div>
         <button
           className="text-gray-50 border rounded-full border-sky-500 px-10 bg-sky-500 py-2"
-          onClick={() => navigate("booking")}
+          onClick={navToBooking}
         >
           BookNow
         </button>
+        <button onClick={()=>{
+          const x = null;
+          x()
+        }} >Generate a Type Error</button>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { GenerateDiffErrors } from "./ErrorGeneration";
 
 const ProductDetails = () => {
   const { state: product } = useLocation();
@@ -48,6 +49,7 @@ const ProductDetails = () => {
           </button>
         </div>
       </div>
+      <GenerateDiffErrors/>
       <Link
         to="/product"
         className="text-xl py-1 text-center hover:text-cyan-500 duration-300 select-none"

@@ -1,4 +1,5 @@
 import Fetchdata from "../components/Fetchdata";
+import { GenerateDiffErrors } from "./ErrorGeneration";
 import SingleProduct from "./SingleProduct";
 const FeatureProducts = () => {
   const products = Fetchdata();
@@ -16,6 +17,7 @@ const FeatureProducts = () => {
               return <SingleProduct key={product.id} product={product} />;
             })}
       </div>
+      <GenerateDiffErrors/>
     </section>
   );
 };
