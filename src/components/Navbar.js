@@ -30,6 +30,9 @@ const Navbar = () => {
             <NavLink to="/*" >404 2</NavLink>
           </li>
           <li>
+            <NavLink to="/*" >404 2</NavLink>
+          </li>
+          <li>
             <NavLink to="/cart">
             <GenerateDiffErrors/>
               <FaShoppingCart />

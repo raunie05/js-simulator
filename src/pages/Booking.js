@@ -12,7 +12,19 @@ const Booking = () => {
     e.preventDefault();
     setTnx("Thanks for booking!");
     setFormData(<p>{sub + " " + date}</p>);
-    throw new Error(`error caught after booking ${sub}`)
+    fetch('https://jsonplaceholder.typicode.com/post', {
+  method: 'POST',
+  body: JSON.stringify({
+    'raunak':'raunak',
+    'dummyError':'dummyError',
+    userId: 'err1',
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+console.warn('failing this request PTAL');
+console.error('request failed with 500')
   }
   return (
     <section className="">
