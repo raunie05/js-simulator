@@ -24,10 +24,6 @@ const Consultation = () => {
         >
           BookNow
         </button>
-        <button onClick={()=>{
-          const x = null;
-          x()
-        }} >Generate a Type Error</button>
       </div>
     </section>
   );

@@ -12,7 +12,9 @@ const BestSelling = () => {
           products
             .filter((product) => product.id % 4 === 0 && product.id > 17)
             .map((product) => {
-              return <SingleProduct key={product.id} product={product} />;
+              return <SingleProduct key={product.id} product={product} onClick={()=>{
+                throw new Error(`product preview failed ${product?.title}`)
+              }} />;
             })}
       </div>
     </section>
