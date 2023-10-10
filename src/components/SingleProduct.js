@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
-const SingleProduct = ({ product }) => {
+const SingleProduct = ({ product,onClick }) => {
   const { img, title, brand, price } = product;
   return (
     <div className="single-product flex flex-col bg-gray-50 gap-3 shadow-md hover:shadow-xl hover:scale-105 duration-300 px-4 py-7 rounded-sm overflow-hidden">
-      <div className="flex justify-center">
+      <div className="flex justify-center" >
         <img
+        onClick={()=>{throw new Error('image preview failed for '+ title)}}
           className="w-72 h-48 object-contain hover:scale-110 duration-500"
           src={img}
           alt={title}
@@ -37,7 +38,7 @@ const SingleProduct = ({ product }) => {
           </button>
         </Link>
         <button
-          onClick={() => console.log("ksk")}
+          onClick={() => onClick?.()}
           className="bg-sky-400 text-sky-50 hover:bg-sky-50 hover:text-sky-400 duration-300 border border-sky-400 px-2 py-1 rounded-md"
         >
           add to cart

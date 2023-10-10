@@ -15,16 +15,16 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/about"onClick={()=>{throw new Error('redirecting issues at about')}}>About</NavLink>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <NavLink to="/product"onClick={()=>{throw new Error('redirecting issues for product')}}>Product</NavLink>
+            <NavLink to="/product">Product</NavLink>
           </li>
           <li>
-            <NavLink to="/booking"onClick={()=>{throw new Error('redirecting issues at booking')}}>Booking</NavLink>
+            <NavLink to="/booking">Booking</NavLink>
           </li>
           <li>
-            <NavLink to="/contact"onClick={()=>{throw new Error('redirecting issues at contact')}} >Contact</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
           </li>
           <li>
             <NavLink to="/*" >404 2</NavLink>
