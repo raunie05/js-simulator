@@ -48,18 +48,18 @@ const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
 
   const prevSlide = () => {
-  
+    throw new Error('error, cannot go to prev slide')
     setCurrentSlide(
       currentSlide === 0 ? data.length - 1 : (prevSlide) => prevSlide - 1
     );
-    throw new Error('error, cannot go to prev slide')
+    
   };
   const nextSlide = () => {
- 
+    throw new Error('error, cannot go to next slide')
     setCurrentSlide(
       currentSlide === data.length - 1 ? 0 : (prevSlide) => prevSlide + 1
     );
-    throw new Error('error, cannot go to next slide')
+    
   };
 
   return (
