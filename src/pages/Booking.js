@@ -1,13 +1,21 @@
 import { useState } from "react";
 import Herotext from "../components/Herotext";
 import BestSelling from "../components/BestSelling";
+import { useLocation } from "react-router-dom";
 
 const Booking = () => {
   const [sub, setSub] = useState("");
   const [date, setDate] = useState("");
   const [tnx, setTnx] = useState("");
   const [formData, setFormData] = useState(""); //form data are saved here
+  const { state: product } = useLocation();
 
+  try{
+    const { img, title, description, category, brand, rating, price } = product;
+  }catch(e){
+    // throw e;
+  }
+  
   function handleSubmit(e) {
     e.preventDefault();
     setTnx("Thanks for booking!");
