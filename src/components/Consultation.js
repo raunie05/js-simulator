@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 const Consultation = () => {
   const navigate = useNavigate();
   const navToBooking = () => {
-    navigate("booking")
     throw new Error('ehh cannot book ' + Date.now());
+    navigate("booking");
+    
   }
   return (
     <section className="consultation flex items-center   py-10 h-[20rem] ">

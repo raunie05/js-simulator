@@ -20,14 +20,18 @@ const Products = () => {
     "Keyboard",
     "graphics card",
   ];
-  const getData = (async () => {
+  const getData = async () => {
     try {
       setIsLoading(true);
       let url;
+      fetch("https://jsonplaceholder.typicode.com/todoess/1")
+        .then((response) => response.json())
+        .then((json) => json);
+
       if (Boolean(Math.random() < 0.4)) {
-        url = `https://itproducts.onrender.com/products`;
+        url = `https://jsonplaceholder.typicode.com/todos`;
       } else {
-        url = `https://itproducts.onrender.com/productts`; // this is a wrong URL
+        url = `https://jsonplaceholder.typicode.com/todosWrong`; // this is a wrong URL
       }
       const res = await fetch(url);
       if (!res.ok) throw new Error("Oops! An error has occured");
@@ -35,15 +39,44 @@ const Products = () => {
       setIsLoading(false);
       setProducts(json);
       setFilterProducts(json);
-      setErr('')
+      setErr("");
     } catch (err) {
       console.log(err);
       setIsLoading(false);
       setErr(err.message);
     }
-  });
+  };
+  const makeXMLreq = (files) => {
+    let url = "";
+    if (Boolean(Math.random() < 0.4)) {
+      url = "https://api.escuelajs.co/api/v1/files/upload";
+    } else {
+      url = "https://api.escuelajs.co/api/v1/files/uploads"; // this is a wrong URL
+    }
+    const myFormData = new FormData();
+    myFormData.append("file", files?.[0]);
+    const res = new XMLHttpRequest();
+    res.open("GET", url);
+    res.send();
+    // if (!res?.ok) throw new Error("Oops! An error has occured");
+    // const json = await res.json();
+    setIsLoading(false);
+    // setProducts(json);
+    // setFilterProducts(json);
+  };
+  const makeUploadFile = (files) => {
+    const myFormData = new FormData();
+    myFormData.append("file", files?.[0]);
+    fetch("https://api.escuelajs.co/api/v1/files/upload", {
+      method: "POST",
+      body: myFormData,
+    })
+      .then((response) => response.json())
+      .then((json) => json);
+  };
   useEffect(() => {
     getData();
+    // makeXMLreq();
   }, []);
 
   if (isLoading)
@@ -56,6 +89,13 @@ const Products = () => {
     return (
       <p className="h-screen flex flex-col justify-center items-center text-2xl">
         <span>{err}</span>
+        <input
+          type="file"
+          onChange={(e) => {
+            console.log("setimeout called", new Date());
+            setTimeout(() => {makeXMLreq(e.target.files)}, 15000);
+          }}
+        />
         <Link to="/product" className="text-lg text-gray-500 font-semibold">
           &larr;Refresh page
         </Link>
@@ -71,13 +111,17 @@ const Products = () => {
 
   return (
     <div className="container mx-auto pb-20">
-              <button
-          onClick={async () => {
-            await getData();
-          }}
-        >
-          Fetch data again
-        </button>
+      <input
+        type="file"
+        onChange={(e) => makeUploadFile(e.target.files)}
+      ></input>
+      <button
+        onClick={async () => {
+          await getData();
+        }}
+      >
+        Fetch data again
+      </button>
       <h2 className="text-center text-3xl py-10">All Products</h2>
       <div className="flex justify-between gap-10">
         <div className="w-[20%] bg-gray-50 flex flex-col gap-3 px-3 pt-2">
